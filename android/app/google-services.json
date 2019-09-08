@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "323442263599",
+    "firebase_url": "https://fluttertest-a5ac0.firebaseio.com",
+    "project_id": "fluttertest-a5ac0",
+    "storage_bucket": "fluttertest-a5ac0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323442263599:android:fe8f286db423997faa68da",
+        "android_client_info": {
+          "package_name": "com.helios.go_ritzy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323442263599-2rimb3si5ftiktmmefmms30am1dd996k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuw6Dvsn4e-FVv09bwmccuzYUmcrjqfCQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323442263599-2rimb3si5ftiktmmefmms30am1dd996k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
