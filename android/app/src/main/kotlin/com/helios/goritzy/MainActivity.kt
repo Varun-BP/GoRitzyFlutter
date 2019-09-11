@@ -1,4 +1,4 @@
-package com.helios.go_ritzy
+package com.helios.goritzy
 
 import android.os.Bundle
 

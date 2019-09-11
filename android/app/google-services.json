@@ -34,6 +34,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323442263599:android:054dca4fd49ee84faa68da",
+        "android_client_info": {
+          "package_name": "com.helios.goritzy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323442263599-2rimb3si5ftiktmmefmms30am1dd996k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuw6Dvsn4e-FVv09bwmccuzYUmcrjqfCQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323442263599-2rimb3si5ftiktmmefmms30am1dd996k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
