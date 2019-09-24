@@ -8,41 +8,28 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:323442263599:android:fe8f286db423997faa68da",
-        "android_client_info": {
-          "package_name": "com.helios.go_ritzy"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "323442263599-2rimb3si5ftiktmmefmms30am1dd996k.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBuw6Dvsn4e-FVv09bwmccuzYUmcrjqfCQ"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "323442263599-2rimb3si5ftiktmmefmms30am1dd996k.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:323442263599:android:054dca4fd49ee84faa68da",
+        "mobilesdk_app_id": "1:323442263599:android:eb6431fc113c6426aa68da",
         "android_client_info": {
           "package_name": "com.helios.goritzy"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "323442263599-73kb1lrrnebk8nfneju96nbbocr3nm96.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.helios.goritzy",
+            "certificate_hash": "4db5c8e97c7f871cdb4709a65e6c9c154104922f"
+          }
+        },
+        {
+          "client_id": "323442263599-t06k3pd9ei1pep57jcpqimrnto3hl9d2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.helios.goritzy",
+            "certificate_hash": "c77695b2f6ae0e0ef7dcb7fa87c8ff08d7116ebf"
+          }
+        },
         {
           "client_id": "323442263599-2rimb3si5ftiktmmefmms30am1dd996k.apps.googleusercontent.com",
           "client_type": 3

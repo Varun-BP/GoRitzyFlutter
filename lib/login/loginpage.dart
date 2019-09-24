@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'auth_listener.dart';
+import 'auth.dart';
+import '../view/widgets/progress_hud.dart';
 
 
 
@@ -9,14 +12,34 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage>
+    implements FirebaseAuthListener {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebasePhoneUtil firebasePhoneUtil;
+  final _scaffoldKey = new GlobalKey<ScaffoldState>();
+  bool _isLoading = false;
   String phoneNo;
   String smsCode;
   String verificationId;
   String _message = '';
 
-  Future<void> verifyPhone() async {
+  @override
+  void initState() {
+    super.initState();
+    firebasePhoneUtil = FirebasePhoneUtil();
+    firebasePhoneUtil.setScreenListener(this);
+  }
+
+  void _submit() {
+    {
+      setState(() {
+        _isLoading = true;
+        firebasePhoneUtil.verifyPhone(this.phoneNo);
+      });
+    }
+  }
+
+  /*Future<void> verifyPhone() async {
     print('Verify number '+this.phoneNo);
 
     setState(() {
@@ -45,6 +68,7 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         _message =
         'Phone number verification failed. Code: ${authException.code}. Message: ${authException.message}';
+        print(_message);
       });
     };
 
@@ -55,9 +79,9 @@ class _LoginPageState extends State<LoginPage> {
         timeout: const Duration(seconds: 5),
         verificationCompleted: verifiedSuccess,
         verificationFailed: veriFailed);
-  }
+  } */
 
-  Future<bool> smsCodeDialog(BuildContext context) {
+  /* Future<bool> smsCodeDialog(BuildContext context) {
     return showDialog(
         context: context,
         barrierDismissible: false,
@@ -88,9 +112,9 @@ class _LoginPageState extends State<LoginPage> {
             ],
           );
         });
-  }
+  } */
 
-  signIn() async {
+  /*signIn() async {
     final AuthCredential credential = PhoneAuthProvider.getCredential(
       verificationId: verificationId,
       smsCode: smsCode,
@@ -107,14 +131,13 @@ class _LoginPageState extends State<LoginPage> {
         _message = 'Sign in failed';
       }
     });
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new Scaffold(
-      body: Center(
-        child: new Stack(
+    return  new Scaffold(
+      body: Stack(
           children: <Widget>[
             Container(
               color: const Color(0xf6f6f6ff),
@@ -208,7 +231,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: Text("Login", style: TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold),textAlign: TextAlign.center,)
                       )
                       ),onTap:(){
-                        verifyPhone();
+                        _submit();
                   }
                   )
                 ],
@@ -216,8 +239,86 @@ class _LoginPageState extends State<LoginPage> {
             )
           ],
         ),
+      );
+    /*var screenRoot = new Container(
+      height: double.maxFinite,
+      alignment: FractionalOffset.center,
+      child: new SingleChildScrollView(
+        child: new Center(
+          child: loginscreen,
+        ),
       ),
-    );
+    );*/
+
+    /*return new Scaffold(
+      backgroundColor: const Color(0xFF2B2B2B),
+      appBar: null,
+      key: _scaffoldKey,
+      body: ProgressHUD(
+        child: screenRoot,
+        inAsyncCall: _isLoading,
+        opacity: 0.0,
+      ),
+    );*/
+  }
+
+  @override
+  void onLoginError(String errorTxt) {
+    setState(() => _isLoading = false);
+  }
+
+  @override
+  void closeLoader() {
+    setState(() => _isLoading = false);
+  }
+
+  @override
+  void showAlert(String msg) {
+    setState(() {
+      print(msg);
+    });
+  }
+
+  @override
+  void showLoader() {
+    setState(() => _isLoading = true);
+  }
+
+  @override
+  verificationCodeSent(int forceResendingToken) {
+    moveOtpVerificationScreen();
+  }
+
+  @override
+  onLoginUserVerified(FirebaseUser currentUser) {
+    moveUserDashboardScreen(currentUser);
+  }
+
+  @override
+  onError(String msg) {
+    showAlert(msg);
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  loginError(e) {
+    setState(() {
+     print(e);
+      _isLoading = false;
+    });
+  }
+
+  void moveOtpVerificationScreen() {
+    closeLoader();
+    Navigator.of(context).pushReplacementNamed('/OtpScreen');
+  }
+
+  @override
+  void moveUserDashboardScreen(FirebaseUser currentUser) {
+    closeLoader();
+    Navigator.of(context).pop();
+    Navigator.of(context).pushReplacementNamed('/Nextscreen');
   }
 
 }

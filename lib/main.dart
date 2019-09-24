@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'user/user_management.dart';
-import 'login/loginpage.dart';
-import 'dashboard/dashboard.dart';
+import 'login/otp_verification.dart';
 
 void main() => runApp(GoRitzy());
 
@@ -30,6 +29,7 @@ class GoRitzy extends StatelessWidget {
       home: SplashScreen(title: 'GoRitzy'),
       routes: <String, WidgetBuilder>{
         '/Nextscreen': (BuildContext context) => userObj.handleAuth(),
+        '/OtpScreen' : (BuildContext context) => new OtpVerificationScreen()
       },
     );
   }
@@ -74,8 +74,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: new Center(
-        child: new Stack(
+      body: Stack(
           children: <Widget>[
             Container(
               decoration: BoxDecoration(
@@ -125,7 +124,6 @@ class _SplashScreenState extends State<SplashScreen> {
             )
           ],
         ),
-      ),
     );
   }
 }
